@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Cordova App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to My Cordova App Test</h1>
+    <button id="recordChargeBtn">Record Charge Event</button>
+    <p><a href="signup.html">Sign Up</a></p>
+
+    <script src="cordova.js"></script>
+    <script>
+        function recordChargeEvent() {
+            var chargeDetails = {
+                'totalValue': 20,
+                'category': 'books',
+                'purchase_date': new Date()
+            };
+
+            var items = [
+                { 'title': 'book1', 'published_date': new Date('2010-12-12T06:35:31'), 'author': 'ABC' },
+                { 'title': 'book2', 'published_date': new Date('2020-12-12T06:35:31'), 'author': 'DEF' },
+                { 'title': 'book3', 'published_date': new Date('2000-12-12T06:35:31'), 'author': 'XYZ' }
+            ];
+
+            CleverTap.recordChargedEventWithDetailsAndItems(chargeDetails, items);
+            alert('Charge event recorded!');
+        }
+
+        document.getElementById('recordChargeBtn').addEventListener('click', recordChargeEvent);
+    </script>
+</body>
+</html>
